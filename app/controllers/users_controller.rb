@@ -23,7 +23,7 @@
 #
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   before_action :load_user, :only => [:show]
 
@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     if service.success
       @user = service.record
 
+    SideKiqWorker.perform_async(h, 5)
+
+    # if instead of sidekiq I was just sending email from rails
+    # VisitorMailer.contact_email(@name, @email, @message).deliver
       render :template => "users/show", :status => :created
     else
       render :json => {:errors => service.errors}, :status => :unprocessable_entity
