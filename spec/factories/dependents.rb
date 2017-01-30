@@ -12,8 +12,8 @@
 
 FactoryGirl.define do
   factory :dependent do
-    name "MyText"
-    parent false
-    user nil
+    name   { Faker.name }
+    parent { Dependent.parents.to_a.first }
+    association :user, factory: :user    
   end
 end
