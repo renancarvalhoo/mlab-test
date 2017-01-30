@@ -13,7 +13,7 @@
 FactoryGirl.define do
   factory :dependent do
     name   { Faker.name }
-    parent { Dependent.parents.to_a.first }
+    parent { Dependent.parent_types.to_a.sample[0] }
     association :user, factory: :user    
   end
 end

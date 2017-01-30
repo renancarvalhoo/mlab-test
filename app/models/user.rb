@@ -31,6 +31,8 @@
 #
 
 class User < ActiveRecord::Base
+
+	has_many :dependents
   # Include default devise modules.
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :async, :trackable, :confirmable, :validatable, :authentication_keys => [:email]
 

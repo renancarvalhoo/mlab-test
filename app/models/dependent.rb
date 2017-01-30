@@ -13,7 +13,7 @@
 class Dependent < ActiveRecord::Base
   belongs_to :user
 
-  enum parents: {
+  enum parent_types: {
     mother:       0,
     father:       1,
     cousin:       2,
@@ -21,6 +21,7 @@ class Dependent < ActiveRecord::Base
     brother:      4,
   }
 
-  validates_presence_of :name, :allow_blank => false  
+
+  validates :name, presence: true, allow_blank: false
   validates_presence_of :parent, :allow_blank => false  
 end
