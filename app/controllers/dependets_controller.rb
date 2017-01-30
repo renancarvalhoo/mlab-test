@@ -8,7 +8,7 @@ class DependentsController < ApplicationController
         respond_with do |format|
       format.json do
         if params[:user_id].present?
-          @dependents = Dependent.where(user_id: params[:user_id] }).order(:id)
+          @dependents = Dependent.where(user_id: params[:user_id]).order(:id)
         else
           @dependents = Dependent.all
         end       
