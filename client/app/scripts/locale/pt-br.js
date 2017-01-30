@@ -30,6 +30,7 @@ var TRANSLATE_TABLE_PT_BR = {
       "validation": {
         "email_format": "Digite um email válido",
         "equal_to_password": "As senhas deve ser iguais",
+        "identification_format": "Digite um CNPJ/CPF válido",
         "minlength": "Esse campo deve ter 6 caracteres",
         "required": "Esse campo é obrigatório"
       },
@@ -52,6 +53,7 @@ var TRANSLATE_TABLE_PT_BR = {
     "menu": {
       "dashboard": "Dashboard",
       "users": "Usuários",
+      "partners": "Fornecedor"
     },
     "users": {
       "are_you_sure": "Tem certeza que deseja remover o(s) usuário(s)",
@@ -82,6 +84,41 @@ var TRANSLATE_TABLE_PT_BR = {
         "email": "Email",
         "username": "Usuário"
       }
-    }    
+    },
+    "partners":{
+      "are_you_sure": "Tem certeza que deseja remover o(s) fornecedor(es)",
+      "destroy_selected": "Apagar selecionados",
+      "edit_partner": "Editar fornecedor",
+      "form": {
+        "social_reason": "Nome",
+        "municipal_inscription": "Inscrição municipal",
+        "state_inscription": "Inscrição estadual",
+        "email": "Email",
+        "identification": "CNPJ/CPF",
+        "address": "Endereço",
+        "phone": "Telefone",
+        "cnpj": "Pessoa jurídica",
+        "cpf": "Pessoa física",
+        "type": "Tipo"
+      },
+      "index": "Fornecedores",
+      "messages": {
+        "success": {
+          "batch_destroy": "Forncedor(es) excluído(s) com sucesso",
+          "create": "Forncedor criado com sucesso",
+          "destroy": "Fornecedor excluído com sucesso",
+          "update": "Fornecedor atualizado com sucesso"
+        }
+      },
+      "new": "Novo",
+      "new_partner": "Novo fornecedor",
+      "select_all": "Selecionar todos",
+      "table": {
+        "id": "ID",
+        "identification": "CNPJ/CPF",
+        "email": "Email",
+        "social_reason": "Nome"
+      }
+    }
   }
 };

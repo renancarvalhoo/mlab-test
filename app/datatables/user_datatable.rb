@@ -1,12 +1,10 @@
 class UserDatatable < AjaxDatatablesRails::Base
-  def_delegator :@view, :current_user
-
   def sortable_columns
-    @sortable_columns ||= %w(User.id User.name User.email User.username)
+    @sortable_columns ||= %w(User.id User.name User.email )
   end
 
   def searchable_columns
-    @searchable_columns ||= %w(User.id User.name User.email User.username)
+    @searchable_columns ||= %w(User.id User.name User.email )
   end
 
   private
@@ -14,11 +12,10 @@ class UserDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        '',
+        "",
         record.id,
         record.name,
-        record.email,
-        record.username
+        record.email
       ]
     end
   end
@@ -27,5 +24,3 @@ class UserDatatable < AjaxDatatablesRails::Base
     User.all
   end
 end
-~                                                                                                                      
-~         

@@ -6,13 +6,13 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-   config.secret_key = '3b5089e5763c21f89295784ba3ceaf272f0aeef34f5db7dfa214de6f297c97f17a0ddbe44e906cb031a0a25d0f0e0f81a728fac13e78e05f5b5a89b8479c470b'
+  config.secret_key = 'bb3c9798b23f487251136d34243084ed26ff328d33bdb61d0f6171b4ad9af16af35681d79638cd7aff189f5785eca5192b9e66888f23abcfe16b10018b5175c5'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'tester@email.com'
+  config.mailer_sender = 'tester@email.com.br'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -31,7 +31,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-   config.authentication_keys = [:email]
+  config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '7b457ed1cecceee0f93eeba3af372e69970c82575e8c94577f6cd70326a86994d98ecdbcd6306eb3b3977dac2561e588182c658240a97421014a9844a2eb4a9a'
+  # config.pepper = 'cc0980bc9461fc273ddaf67f52778f45965a6170a4162a4cdc9282c526486c6f940e9800f881833dc35ea5793995f1104c3f4e63d8f0f6ddee3bf2552cebd0f2'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -145,7 +145,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..72
+  config.password_length = 6..72
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -230,7 +230,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-   config.navigational_formats = [:json]
+  config.navigational_formats = [:json]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

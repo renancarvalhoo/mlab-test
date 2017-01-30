@@ -30,6 +30,7 @@ var TRANSLATE_TABLE_EN = {
       "validation": {
         "email_format": "Enter a valid email",
         "equal_to_password": "Password must match",
+        "identification_format": "Enter a valid identification",
         "minlength": "This field must be 6 characters length",
         "required": "This field is required"
       },
@@ -84,25 +85,39 @@ var TRANSLATE_TABLE_EN = {
         "username": "Username"
       }
     },
-    "partners":{
+    "partners": {
       "are_you_sure": "Are you sure you want to remove the partner(s)",
       "destroy_selected": "Remove selected",
+      "edit_user": "Edit partner",
       "form": {
+        "social_reason": "Name",
+        "municipal_inscription": "Municipal Inscription",
+        "state_inscription": "State Inscription",
         "email": "Email",
-        "name": "Name",
-        "password": "Password",
-        "password_confirmation": "Confirm",
-        "username": "Username"
+        "identification": "CNPJ/CPF",
+        "address": "Address",
+        "phone": "Phone",
+        "cnpj": "Company",
+        "cpf": "Person",
+        "type": "Type"
       },
-      "index": "Partners",
+      "index": "Users",
+      "messages": {
+        "success": {
+          "batch_destroy": "Partner(s) removed sucessfully",
+          "create": "Partner created sucessfully",
+          "destroy": "Partner removed sucessfully",
+          "update": "Partner updated sucessfully"
+        }
+      },
       "new": "New",
-      "new_user": "New partner",
+      "new_partner": "New partner",
       "select_all": "Select all",
       "table": {
         "id": "ID",
-        "name": "Name",
+        "identification": "CNPJ/CPF",
         "email": "Email",
-        "username": "Username"
+        "social_reason": "Name"
       }
     }
   }

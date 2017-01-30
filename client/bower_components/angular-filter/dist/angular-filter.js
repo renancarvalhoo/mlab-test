@@ -1,6 +1,6 @@
 /**
  * Bunch of useful filters for angularJS(with no external dependencies!)
- * @version v0.5.14 - 2016-12-06 * @link https://github.com/a8m/angular-filter
+ * @version v0.5.11 - 2016-08-16 * @link https://github.com/a8m/angular-filter
  * @author Ariel Mashraki <ariel@mashraki.co.il>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -117,10 +117,11 @@ if (!String.prototype.contains) {
 /**
  * @param num {Number}
  * @param decimal {Number}
+ * @param $math
  * @returns {Number}
  */
-function convertToDecimal(num, decimal){
-  return Math.round(num * Math.pow(10,decimal)) / (Math.pow(10, decimal));
+function convertToDecimal(num, decimal, $math){
+  return $math.round(num * $math.pow(10,decimal)) / ($math.pow(10,decimal));
 }
 
 /**
@@ -1333,21 +1334,6 @@ angular.module('a8m.xor', [])
 
 /**
  * @ngdoc filter
- * @name abs
- * @kind function
- *
- * @description
- * Will return the absolute value of a number
- */
-angular.module('a8m.math.abs', [])
-  .filter('abs', function () {
-    return function (input) {
-      return Math.abs(input);
-    }
-  });
-
-/**
- * @ngdoc filter
  * @name formatBytes
  * @kind function
  *
@@ -1355,24 +1341,26 @@ angular.module('a8m.math.abs', [])
  * Convert bytes into appropriate display 
  * 1024 bytes => 1 KB
  */
-angular.module('a8m.math.byteFmt', [])
-  .filter('byteFmt', function () {
-    var compared = [{str: 'B', val: 1024}];
-    ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'].forEach(function(el, i) {
-      compared.push({str: el, val: compared[i].val * 1024 });
-    });
+angular.module('a8m.math.byteFmt', ['a8m.math'])
+  .filter('byteFmt', ['$math', function ($math) {
     return function (bytes, decimal) {
+
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(bytes) && isFinite(bytes)) {
-        var i = 0;
-        while (i < compared.length-1 && bytes >= compared[i].val) i++;
-        bytes /= i > 0 ? compared[i-1].val : 1;
-        return convertToDecimal(bytes, decimal) + ' ' + compared[i].str;
-      }
-      return 'NaN';
-    }
-  });
+        if(bytes < 1024) { // within 1 KB so B
+          return convertToDecimal(bytes, decimal, $math) + ' B';
+        } else if(bytes < 1048576) { // within 1 MB so KB
+          return convertToDecimal((bytes / 1024), decimal, $math) + ' KB';
+        } else if(bytes < 1073741824){ // within 1 GB so MB
+          return convertToDecimal((bytes / 1048576), decimal, $math) + ' MB';
+        } else { // GB or more
+          return convertToDecimal((bytes / 1073741824), decimal, $math) + ' GB';
+        }
 
+      }
+      return "NaN";
+    }
+  }]);
 /**
  * @ngdoc filter
  * @name degrees
@@ -1381,20 +1369,20 @@ angular.module('a8m.math.byteFmt', [])
  * @description
  * Convert angle from radians to degrees
  */
-angular.module('a8m.math.degrees', [])
-  .filter('degrees', function () {
+angular.module('a8m.math.degrees', ['a8m.math'])
+  .filter('degrees', ['$math', function ($math) {
     return function (radians, decimal) {
       // if decimal is not an integer greater than -1, we cannot do. quit with error "NaN"
       // if degrees is not a real number, we cannot do also. quit with error "NaN"
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(radians) && isFinite(radians)) {
-        var degrees = (radians * 180) / Math.PI;
-        return Math.round(degrees * Math.pow(10,decimal)) / (Math.pow(10,decimal));
+        var degrees = (radians * 180) / $math.PI;
+        return $math.round(degrees * $math.pow(10,decimal)) / ($math.pow(10,decimal));
       } else {
-        return 'NaN';
+        return "NaN";
       }
     }
-  });
+  }]);
 
  
  
@@ -1407,23 +1395,34 @@ angular.module('a8m.math.degrees', [])
  * Convert bytes into appropriate display 
  * 1024 kilobytes => 1 MB
  */
-angular.module('a8m.math.kbFmt', [])
-  .filter('kbFmt', function () {
-    var compared = [{str: 'KB', val: 1024}];
-    ['MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'].forEach(function(el, i) {
-      compared.push({str: el, val: compared[i].val * 1024 });
-    });
+angular.module('a8m.math.kbFmt', ['a8m.math'])
+  .filter('kbFmt', ['$math', function ($math) {
     return function (bytes, decimal) {
+
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(bytes) && isFinite(bytes)) {
-        var i = 0;
-        while (i < compared.length-1 && bytes >= compared[i].val) i++;
-        bytes /= i > 0 ? compared[i-1].val : 1;
-        return convertToDecimal(bytes, decimal) + ' ' + compared[i].str;
+        if(bytes < 1024) { // within 1 MB so KB
+          return convertToDecimal(bytes, decimal, $math) + ' KB';
+        } else if(bytes < 1048576) { // within 1 GB so MB
+          return convertToDecimal((bytes / 1024), decimal, $math) + ' MB';
+        } else {
+          return convertToDecimal((bytes / 1048576), decimal, $math) + ' GB';
+        }
       }
-      return 'NaN';
+      return "NaN";
     }
-  });
+  }]);
+/**
+ * @ngdoc module
+ * @name math
+ * @description
+ * reference to global Math object
+ */
+angular.module('a8m.math', [])
+  .factory('$math', ['$window', function ($window) {
+    return $window.Math;
+  }]);
+
 /**
  * @ngdoc filter
  * @name max
@@ -1433,15 +1432,15 @@ angular.module('a8m.math.kbFmt', [])
  * Math.max will get an array and return the max value. if an expression
  * is provided, will return max value by expression.
  */
-angular.module('a8m.math.max', [])
-  .filter('max', ['$parse', function ($parse) {
+angular.module('a8m.math.max', ['a8m.math'])
+  .filter('max', ['$math', '$parse', function ($math, $parse) {
     return function (input, expression) {
 
       if(!isArray(input)) {
         return input;
       }
       return isUndefined(expression)
-        ? Math.max.apply(Math, input)
+        ? $math.max.apply($math, input)
         : input[indexByMax(input, expression)];
     };
 
@@ -1455,7 +1454,7 @@ angular.module('a8m.math.max', [])
       var mappedArray = array.map(function(elm){
         return $parse(exp)(elm);
       });
-      return mappedArray.indexOf(Math.max.apply(Math, mappedArray));
+      return mappedArray.indexOf($math.max.apply($math, mappedArray));
     }
   }]);
 /**
@@ -1467,15 +1466,15 @@ angular.module('a8m.math.max', [])
  * Math.min will get an array and return the min value. if an expression
  * is provided, will return min value by expression.
  */
-angular.module('a8m.math.min', [])
-  .filter('min', ['$parse', function ($parse) {
+angular.module('a8m.math.min', ['a8m.math'])
+  .filter('min', ['$math', '$parse', function ($math, $parse) {
     return function (input, expression) {
 
       if(!isArray(input)) {
         return input;
       }
       return isUndefined(expression)
-        ? Math.min.apply(Math, input)
+        ? $math.min.apply($math, input)
         : input[indexByMin(input, expression)];
     };
 
@@ -1489,7 +1488,7 @@ angular.module('a8m.math.min', [])
       var mappedArray = array.map(function(elm){
         return $parse(exp)(elm);
       });
-      return mappedArray.indexOf(Math.min.apply(Math, mappedArray));
+      return mappedArray.indexOf($math.min.apply($math, mappedArray));
     }
   }]);
 /**
@@ -1500,21 +1499,21 @@ angular.module('a8m.math.min', [])
  * @description
  * percentage between two numbers
  */
-angular.module('a8m.math.percent', [])
-  .filter('percent', function () {
+angular.module('a8m.math.percent', ['a8m.math'])
+  .filter('percent', ['$math', '$window', function ($math, $window) {
     return function (input, divided, round) {
 
-      var divider = isString(input) ? Number(input) : input;
+      var divider = isString(input) ? $window.Number(input) : input;
       divided = divided || 100;
       round = round || false;
 
-      if (!isNumber(divider) || isNaN(divider)) return input;
+      if (!isNumber(divider) || $window.isNaN(divider)) return input;
 
       return round
-        ? Math.round((divider / divided) * 100)
+        ? $math.round((divider / divided) * 100)
         : (divider / divided) * 100;
     }
-  });
+  }]);
 
 /**
  * @ngdoc filter
@@ -1524,19 +1523,19 @@ angular.module('a8m.math.percent', [])
  * @description
  * Convert angle from degrees to radians
  */
-angular.module('a8m.math.radians', [])
-  .filter('radians', function() {
+angular.module('a8m.math.radians', ['a8m.math'])
+  .filter('radians', ['$math', function ($math) {
     return function (degrees, decimal) {
       // if decimal is not an integer greater than -1, we cannot do. quit with error "NaN"
       // if degrees is not a real number, we cannot do also. quit with error "NaN"
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(degrees) && isFinite(degrees)) {
         var radians = (degrees * 3.14159265359) / 180;
-        return Math.round(radians * Math.pow(10,decimal)) / (Math.pow(10,decimal));
+        return $math.round(radians * $math.pow(10,decimal)) / ($math.pow(10,decimal));
       }
-      return 'NaN';
+      return "NaN";
     }
-  });
+  }]);
 
  
  
@@ -1571,25 +1570,25 @@ angular.module('a8m.math.radix', [])
  * i.e: K for one thousand, M for Million, B for billion
  * e.g: number of users:235,221, decimal:1 => 235.2 K
  */
-angular.module('a8m.math.shortFmt', [])
-  .filter('shortFmt', function () {
+angular.module('a8m.math.shortFmt', ['a8m.math'])
+  .filter('shortFmt', ['$math', function ($math) {
     return function (number, decimal) {
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(number) && isFinite(number)){
         if(number < 1e3) {
-          return '' + number;  // Coerce to string
+          return number;
         } else if(number < 1e6) {
-          return convertToDecimal((number / 1e3), decimal) + ' K';
+          return convertToDecimal((number / 1e3), decimal, $math) + ' K';
         } else if(number < 1e9){
-          return convertToDecimal((number / 1e6), decimal) + ' M';
+          return convertToDecimal((number / 1e6), decimal, $math) + ' M';
         } else {
-          return convertToDecimal((number / 1e9), decimal) + ' B';
+          return convertToDecimal((number / 1e9), decimal, $math) + ' B';
         }
 
       }
-      return 'NaN';
+      return "NaN";
     }
-  });
+  }]);
 /**
  * @ngdoc filter
  * @name sum
@@ -2280,10 +2279,10 @@ angular.module('angular.filter', [
   'a8m.flatten',
   'a8m.join',
   'a8m.range',
-
+  
+  'a8m.math',
   'a8m.math.max',
   'a8m.math.min',
-  'a8m.math.abs',
   'a8m.math.percent',
   'a8m.math.radix',
   'a8m.math.sum',

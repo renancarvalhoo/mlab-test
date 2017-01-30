@@ -6,9 +6,9 @@ angular
     return restmod.model('/api/users').mix({
       $extend: {
         Model: {
-          $batchDestroy: function(user_ids) {
+          $batchDestroy: function(ids) {
             return $http.delete(RMUtils.joinUrl(this.$url(), "batch_destroy"), {
-              params: {"ids[]": user_ids}
+              params: {"ids[]": ids}
             });
           }
         }

@@ -21,7 +21,7 @@ angular
 
     self.login = function() {
       $auth.submitLogin(self.user);
-    }
+    }    
 
     self.init();
   });

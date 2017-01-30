@@ -1,7 +1,7 @@
 ----- MLAB preparação do ambiente -----
   
 ################# Backend #################
-Todos os comandos devem ser executados dentro da raiz do projeto (distrib2)
+Todos os comandos devem ser executados dentro da raiz do projeto (mlab)
 
 O projeto foi feito utilizando a versão 2.3.0 do ruby, recomendo utilizá-la.
 
@@ -18,8 +18,7 @@ Os testes são transacionados, ou seja, após cada teste é feito o rollback da 
 
 ################# Frontend #################
 O projeto do front fica dentro da pasta client.
-Todos os comandos devem ser executados dentro da raiz do projeto do frontend (distrib2/client)
-
+Todos os comandos devem ser executados dentro da raiz do projeto do frontend (mlab/client)
 1 - Certificar-se que o nodejs, npm e bower estão instalados no sistema
 
 2 - Executar `npm install` para instalar as dependências do node

@@ -10,10 +10,13 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'will_paginate'
+
 gem 'devise_token_auth'
 
 gem 'ajax-datatables-rails'
 
+gem 'rack-cors', :require => 'rack/cors'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,6 +46,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'

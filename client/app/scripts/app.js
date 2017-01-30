@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * @ngdoc overview
+ * @name mlabApp
+ * @description
+ * # mlabApp
+ *
+ * Main module of the application.
+ */
 angular
   .module('mlabApp', [
     'ngResource',
@@ -42,6 +50,17 @@ angular
           },
           "content@login": {
             templateUrl: "views/login/form.html"
+          }
+        }
+      })
+      .state("sign_up", {
+        url: "/sign_up",
+        views: {
+          "layout@": {
+            templateUrl: "views/layouts/sign_up.html",
+          },
+          "content@sign_up": {
+            templateUrl: "views/login/sign_up.html"
           }
         }
       })
@@ -101,6 +120,54 @@ angular
           },
           "content@users_edit": {
             templateUrl: "views/users/edit.html"
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state("partners_index", {
+        url: "/partners",
+        views: {
+          "layout@": {
+            templateUrl: "views/layouts/main.html",
+          },
+          "content@partners_index": {
+            templateUrl: "views/partners/index.html"
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state("partners_new", {
+        url: "/partners/new",
+        views: {
+          "layout@": {
+            templateUrl: "views/layouts/main.html",
+          },
+          "content@partners_new": {
+            templateUrl: "views/partners/new.html"
+          }
+        },
+        resolve: {
+          auth: function($auth) {
+            return $auth.validateUser();
+          }
+        }
+      })
+      .state("partners_edit", {
+        url: "/partners/:id/edit",
+        views: {
+          "layout@": {
+            templateUrl: "views/layouts/main.html",
+          },
+          "content@partners_edit": {
+            templateUrl: "views/partners/edit.html"
           }
         },
         resolve: {

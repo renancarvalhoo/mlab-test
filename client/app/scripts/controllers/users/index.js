@@ -31,6 +31,7 @@ angular
     }
 
     self.init = function() {
+      $(".modal-backdrop").remove();
       self.$table = $('#table_users').dataTable({
         "language": {
           "aria": {
@@ -68,8 +69,7 @@ angular
             return "<a href='#/users/" + row[1] + "/edit'>" + row[1] + "</a>";
           }},
           { "targets": 2, "data": 2, "title": $filter("translate")("views.users.table.name") },
-          { "targets": 3, "data": 3, "title": $filter("translate")("views.users.table.email") },
-          { "targets": 4, "data": 4, "title": $filter("translate")("views.users.table.username") }
+          { "targets": 3, "data": 3, "title": $filter("translate")("views.users.table.email") }
         ],
 
         ajax: {

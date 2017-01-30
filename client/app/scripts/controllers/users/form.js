@@ -50,6 +50,7 @@ angular
             toastr.i18n_success("views.users.messages.success.create");
             $scope.userForm.$setPristine();
             self.model = new UserModel();
+            $state.go("login");
           }
         },
         'after-update': function(response) {
@@ -81,6 +82,7 @@ angular
     }
 
     self.saveUser = function() {
+      console.log($scope);
       if($scope.userForm.validate()) {
         self.model.$save();
       }

@@ -1,6 +1,6 @@
 {
   "name": "angular-inflector",
-  "version": "0.2.4",
+  "version": "0.2.3",
   "authors": [
     "Ignacio Baixas <ignacio@platan.us>"
   ],
@@ -25,11 +25,11 @@
     "angular": "*",
     "angular-mocks": "*"
   },
-  "_release": "0.2.4",
+  "_release": "0.2.3",
   "_resolution": {
     "type": "version",
-    "tag": "v0.2.4",
-    "commit": "0fa4e1851aa1d923038b170fbb7628cd7502c9d8"
+    "tag": "v0.2.3",
+    "commit": "964fb18474a5930a4fdbeaabf5d07ac2d63988aa"
   },
   "_source": "https://github.com/iobaixas/angular-inflector.git",
   "_target": "~0.2.0",
