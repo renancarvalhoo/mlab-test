@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include DeviseTokenAuth::Concerns::User
+
   validates :email, :presence => true, :uniqueness => {:case_sensitive => false}, :allow_blank => false
   validates_presence_of :name, :allow_blank => false
 

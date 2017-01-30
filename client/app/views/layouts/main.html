@@ -1,0 +1,26 @@
+<!-- BEGIN HEADER -->
+<header ng-include="'views/common/header.html'" class="page-header md-shadow-z-1-i"></header>
+<!-- END HEADER -->
+
+<!-- PAGE CONTENT BEGIN -->
+<div class="container-fluid">
+  <div class="page-content page-content-popup">
+    <!-- BEGIN PAGE CONTENT FIXED -->
+    <div class="page-content-fixed-header">
+      <ul class="page-breadcrumb">
+        <li><a href="#">Distrib2</a></li>
+      </ul>
+    </div>
+
+    <div ng-include="'views/common/sidebar.html'" ng-controller="SidebarController" class="page-sidebar-wrapper"></div>
+
+    <div class="page-fixed-main-content">
+      <div ui-view="content" class="fade-in-up"></div>
+    </div>
+
+    <p ng-include="'views/common/footer.html'" ng-controller="FooterController" class="copyright-v2"></p>
+  </div>
+</div>
+<!-- PAGE CONTENT END -->
+
+<a href="#index" class="go2top"><i class="icon-arrow-up"></i></a>

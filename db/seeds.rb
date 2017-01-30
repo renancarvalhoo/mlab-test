@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+unless Rails.env.test?
+   User.create({:email => "user@mlab.com.br", :password => "mlab@2017", :password_confirmation => "mlab@2017", :name => "User Test"}) unless User.exists?(:email => "user@mlab.com.br")
+  
+end

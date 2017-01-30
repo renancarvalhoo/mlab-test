@@ -1,0 +1,20 @@
+<form class="login-form" action="#" method="post" name="loginForm">
+  <h3 class="form-title font-green" translate="views.login.sign_in"></h3>
+  <div class="alert alert-danger" ng-show="ctrl.errors.length > 0">
+    <span>{{ctrl.errors.join(",")}}</span>
+  </div>
+  <div class="form-group form-md-line-input" ng-class="{'has-error': loginForm.username.$dirty && loginForm.username.$invalid}">
+    <input type="text" placeholder="{{ 'views.login.placeholders.username' | translate }}" name="username" id="username" class="form-control" ng-model="ctrl.user.username" required>
+    <label for="username"></label>
+    <span class="help-block" translate="views.login.tips.username"></span>
+  </div>
+  <div class="form-group form-md-line-input" ng-class="{'has-error': loginForm.password.$dirty && loginForm.password.$invalid}">
+    <input type="password" autocomplete="off" placeholder="{{ 'views.login.placeholders.password' | translate }}" name="password" id="password" class="form-control"  ng-model="ctrl.user.password" required>
+    <label for="password"></label>
+    <span class="help-block" translate="views.login.tips.password"></span>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn green uppercase" translate="views.login.submit" ng-click="ctrl.login()"></button>
+    <a href="javascript:;" id="forget-password" class="forget-password" translate="views.login.forgot_password"></a>
+  </div>
+</form>

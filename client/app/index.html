@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if !IE]><!-->
+<html lang="en" class="no-js" ng-app="mlabApp">
+<!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Distrib2</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="Coyô Software" name="author" />
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="//fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    
+    <!-- BEGIN PAGE STYLES -->
+    <link href="assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE STYLES -->
+
+    <!-- BEGIN THEME STYLES -->
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+    <link href="assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="assets/layouts/layout6/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout6/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/pages/css/login.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+  </head>
+
+  <body class="page-quick-sidebar-over-content page-on-load login" ng-controller="AppController">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <!-- BEGIN PAGE SPINNER -->
+    <div ng-spinner-bar class="page-spinner-bar">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+    <!-- END PAGE SPINNER -->
+
+    <div ui-view="layout">
+    </div>
+
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+    <script src="assets/global/plugins/respond.min.js"></script>
+    <script src="assets/global/plugins/excanvas.min.js"></script> 
+    <![endif]-->
+    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    
+    <!-- BEGIN CORE ANGULARJS PLUGINS -->
+    <script src="assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>    
+    <script src="assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ui-select/select.min.js" type="text/javascript"></script>
+    <!-- END CORE ANGULARJS PLUGINS -->
+
+    <script src="bower_components/angular-cookie/angular-cookie.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js" type="text/javascript"></script>
+    <script src="bower_components/ng-token-auth/dist/ng-token-auth.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-resource/angular-resource.js" type="text/javascript"></script>
+    <script src="bower_components/angular-inflector/dist/angular-inflector.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-restmod/dist/angular-restmod-bundle.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-restmod/dist/styles/ams.min.js" type="text/javascript"></script>
+    <script src="bower_components/jpkleemans-angular-validate/dist/angular-validate.min.js" type="text/javascript"></script>
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="assets/global/plugins/datatables/datatables.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+
+    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/layout6/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js" type="text/javascript"></script>
+    <script src="scripts/directives.js" type="text/javascript"></script>
+
+    <script src="scripts/models/user.js" type="text/javascript"></script>
+
+    <script src="scripts/controllers/common/main.js" type="text/javascript"></script>
+    <script src="scripts/controllers/common/footer.js" type="text/javascript"></script>
+    <script src="scripts/controllers/common/header.js" type="text/javascript"></script>
+    <script src="scripts/controllers/common/sidebar.js" type="text/javascript"></script>
+
+    <script src="scripts/controllers/login/form.js" type="text/javascript"></script>
+
+    <script src="scripts/controllers/users/index.js" type="text/javascript"></script>
+    <script src="scripts/controllers/users/form.js" type="text/javascript"></script>
+
+    <!-- BEGIN I18N TRANSLATIONS -->
+    <script src="scripts/locale/en.js" type="text/javascript"></script>
+    <script src="scripts/locale/pt-br.js" type="text/javascript"></script>
+    <!-- END I18N TRANSLATIONS -->
+    <!-- endbuild -->
+  </body>
+</html>
