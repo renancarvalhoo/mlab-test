@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+#  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,4 +54,18 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  scope '/api', defaults: {format: 'json'} do
+    mount_devise_token_auth_for 'User', at: 'auth', skip: [:registrations, :passwords], controllers: {
+      token_validations:  'overrides/token_validations',
+      sessions: 'overrides/sessions'
+    }
+
+    resources :users, :except => [:edit] do
+      collection do
+        delete :batch_destroy
+      end
+    end
+  end
+
 end

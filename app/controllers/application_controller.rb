@@ -13,7 +13,6 @@ class ApplicationController < ActionController::API
       devise_parameter_sanitizer.for(:sign_in) << [:email]
     end
 
-  protect_from_forgery with: :exception
 end
 
 

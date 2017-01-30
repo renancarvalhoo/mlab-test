@@ -108,54 +108,6 @@ angular
             return $auth.validateUser();
           }
         }
-      })
-      .state("partners_index", {
-        url: "/partners",
-        views: {
-          "layout@": {
-            templateUrl: "views/layouts/main.html",
-          },
-          "content@partners_index": {
-            templateUrl: "views/partners/index.html"
-          }
-        },
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-      })
-      .state("partners_new", {
-        url: "/partners/new",
-        views: {
-          "layout@": {
-            templateUrl: "views/layouts/main.html",
-          },
-          "content@partners_new": {
-            templateUrl: "views/partners/new.html"
-          }
-        },
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
-      })
-      .state("partners_edit", {
-        url: "/partners/:id/edit",
-        views: {
-          "layout@": {
-            templateUrl: "views/layouts/main.html",
-          },
-          "content@partners_edit": {
-            templateUrl: "views/partners/edit.html"
-          }
-        },
-        resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
-          }
-        }
       });
 
       $urlRouterProvider.otherwise('/dashboard');

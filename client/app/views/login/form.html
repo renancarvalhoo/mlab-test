@@ -3,10 +3,10 @@
   <div class="alert alert-danger" ng-show="ctrl.errors.length > 0">
     <span>{{ctrl.errors.join(",")}}</span>
   </div>
-  <div class="form-group form-md-line-input" ng-class="{'has-error': loginForm.username.$dirty && loginForm.username.$invalid}">
-    <input type="text" placeholder="{{ 'views.login.placeholders.username' | translate }}" name="username" id="username" class="form-control" ng-model="ctrl.user.username" required>
-    <label for="username"></label>
-    <span class="help-block" translate="views.login.tips.username"></span>
+  <div class="form-group form-md-line-input" ng-class="{'has-error': loginForm.email.$dirty && loginForm.email.$invalid}">
+    <input type="text" placeholder="{{ 'views.login.placeholders.username' | translate }}" name="email" id="email" class="form-control" ng-model="ctrl.user.email" required>
+    <label for="email"></label>
+    <span class="help-block" translate="views.login.tips.email"></span>
   </div>
   <div class="form-group form-md-line-input" ng-class="{'has-error': loginForm.password.$dirty && loginForm.password.$invalid}">
     <input type="password" autocomplete="off" placeholder="{{ 'views.login.placeholders.password' | translate }}" name="password" id="password" class="form-control"  ng-model="ctrl.user.password" required>
