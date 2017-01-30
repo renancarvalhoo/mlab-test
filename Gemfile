@@ -8,8 +8,6 @@ gem 'rails-api'
 
 gem 'pg'
 
-gem 'jbuilder'
-
 gem 'devise'
 
 gem 'devise_token_auth'
